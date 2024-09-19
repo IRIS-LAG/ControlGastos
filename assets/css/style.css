@@ -1,0 +1,128 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: 'Inter', sans-serif;
+}
+body {
+    background: url("../img/codigo.svg"), linear-gradient(#139ba5 0%, #04322c 33.33%, #043032 66.67%, #010e0e 100%); 
+    height: 100vh;
+    font-size: 18px;
+    align-items: center;
+    justify-content: center;
+}
+.main-container {
+    width: 80%;
+    height: 95vh;
+    padding: 30px;
+    margin: 20px auto;
+    border: 1px solid #0a8797;
+    border-radius: 15px;
+    background-image: url("../img/Ruido.png");
+    box-shadow: 4px 4px 10px 0px rgba(1, 8, 14, 1);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    filter: sepia(50%);
+}
+h1 {
+    margin: 20px;
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 0px;
+    text-align: center;
+}
+.container__titulo {
+    color: #60ddee;
+    display: block;
+    font-size: 0.8em;
+} 
+#lisClasif {
+    width: 30%;
+    font-size: 1em;
+    margin: 20px 0px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: transparent;
+    border: 2px solid rgb(33, 158, 167);
+}
+#lisClasif option {
+    color: #04322c;
+    background-color: rgb(84, 145, 150);
+}
+.form-group {
+    display: flex;
+}
+input {
+    font-size: 1em;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: transparent;
+    border: 2px solid rgb(33, 158, 167);
+}
+input[type="text"] {
+    width: 55%;
+    margin-right: 10px;
+}
+input[type="number"] {
+    width: 20%;
+    margin-right: 10px;
+}
+#botonFormulario {
+    font-size: 1em;
+    flex: 1;
+    border-radius: 8px;
+    border: none;
+    background-color: rgb(33, 158, 167);
+    box-shadow: 4px 4px 10px 0px rgba(1, 8, 14, 1);
+}
+.total {
+    text-align: end;
+    background-color:rgb(33, 158, 167);
+    border-radius: 4px;
+    padding: 10px 10px;
+    margin-top: 20px;
+}
+#totalGastos {
+    margin: 0 20px;
+}
+#listaDeGastos {
+    margin: 20px 0px;
+    border: 1px solid rgb(33, 158, 167);
+    border-radius: 6px;
+    list-style-type: none;
+}
+#listaDeGastos li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid rgb(15, 99, 105);
+}
+.bpeq1, .bpeq2 {
+    font-size: 1em;
+    width: 45px;
+    height: 25px;
+    margin: 0 5px;
+    border-radius: 6px;
+    border: none;
+    box-shadow: 4px 4px 10px 0px rgba(1, 8, 14, 1);
+}
+.bpeq1 {
+    background-color: rgb(33, 158, 167);
+}
+.bpeq2 {
+    background-color: rgb(141, 50, 50);
+}
+.bpeq1:hover, .bpeq2:hover, #botonFormulario:hover {
+    filter: contrast(280%);
+}
+@media screen and (max-width: 760px) {
+    body {
+        font-size: 12px;
+    }
+    #lisClasif {
+        width: 100%;
+    }
+
+}
