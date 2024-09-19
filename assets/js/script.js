@@ -17,18 +17,16 @@ function clickBoton() {
     } else {
         if (focoE == -1) {
             cadenaDatos = {
-                id: Math.round(Math.random() * 100)+1,
                 cate: categoria,
                 nomb: nombreGas.value,
                 val: valor.value
             };
             lista.push (cadenaDatos);
         } else {
-            const itemEncon = lista.findIndex((elItem) => elItem.id === focoE);
-            lista [itemEncon].cate = categoria;
-            lista [itemEncon].nomb = nombreGas.value;
-            lista [itemEncon].val = valor.value;
-            focoE = 0
+            lista [focoE].cate = categoria;
+            lista [focoE].nomb = nombreGas.value;
+            lista [focoE].val = valor.value;
+            focoE = -1
         };
         actualizaGastos();
         nombreGas.value = "";
@@ -40,11 +38,11 @@ function actualizaGastos() {
     const total = document.getElementById('totalGastos');
     let htmlLista = '';
     let valorTot = 0;
-    lista.forEach((item) => {
+    lista.forEach((item, position) => {
         htmlLista += 
         `<li>${item.cate}: ${item.nomb} ----> US$ ${item.val}    
-            <div><button class="bpeq1" title="Editar" data-id="${item.id}" onclick="editar(${item.id})">E</button>
-                <button class="bpeq2" title="Borrar" data-id="${item.id}" onclick="borrarItem(${item.id})">X</button>
+            <div><button class="bpeq1" title="Editar" onclick="editar(${position})">E</button>
+                <button class="bpeq2" title="Borrar" onclick="borrarItem(${position})">X</button>
             <div>
         </li>`
         valorTot += Number(item.val)
@@ -53,8 +51,7 @@ function actualizaGastos() {
     total.innerHTML = valorTot.toFixed(2);
 }
 function borrarItem(unItem) {
-    const itemEncon = lista.findIndex((elItem) => elItem.id === unItem);
-    lista.splice(itemEncon, 1);
+    lista.splice(unItem, 1);
     actualizaGastos();
 }
 function editar(unItem) {
@@ -63,9 +60,7 @@ function editar(unItem) {
     let nombreGas = document.getElementById('nombreGasto');
     let valor = document.getElementById('valorGasto');
 
-    const itemEncon = lista.findIndex((elItem) => elItem.id === unItem);
-    
-    categoria.value = lista [itemEncon].cate;
-    nombreGas.value = lista [itemEncon].nomb;
-    valor.value = lista [itemEncon].val;
+    categoria.value = lista [unItem].cate;
+    nombreGas.value = lista [unItem].nomb;
+    valor.value = lista [unItem].val;
 }
