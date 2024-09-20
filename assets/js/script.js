@@ -5,8 +5,10 @@ let focoE = -1;
 let cadenaDatos;
 
 function clickBoton() {
-    let categoria = document.getElementById('lisClasif').value;
-    let nombreGas = document.getElementById('nombreGasto');
+    const categoria = document.getElementById('lisClasif').value;
+    const nombreGas = document.getElementById('nombreGasto');
+    const boton = document.getElementById('botonFormulario');
+    
     let valor = document.getElementById('valorGasto');
     if (categoria == 'Categoria'){
         alert ("Escoja una CATEGORIA válida");
@@ -27,6 +29,7 @@ function clickBoton() {
             lista [focoE].nomb = nombreGas.value;
             lista [focoE].val = valor.value;
             focoE = -1
+            boton.innerHTML = "Agregar Gasto";
         };
         actualizaGastos();
         nombreGas.value = "";
@@ -39,13 +42,17 @@ function actualizaGastos() {
     let htmlLista = '';
     let valorTot = 0;
     lista.forEach((item, position) => {
+        let subCond = '';
+        if (item.val >= 1500) {
+            subCond = 'style = "color:red; font-weight:bolder;"';
+        };
         htmlLista += 
-        `<li>${item.cate}: ${item.nomb} ----> US$ ${item.val}    
+        `<li><div>${item.cate}: ${item.nomb} __ US$ <span ${subCond}>${Number(item.val).toFixed(2)}</span></div>
             <div><button class="bpeq1" title="Editar" onclick="editar(${position})">E</button>
                 <button class="bpeq2" title="Borrar" onclick="borrarItem(${position})">X</button>
             <div>
-        </li>`
-        valorTot += Number(item.val)
+        </li>`;
+        valorTot += Number(item.val);
     }); 
     listaDG.innerHTML = htmlLista;
     total.innerHTML = valorTot.toFixed(2);
@@ -55,6 +62,10 @@ function borrarItem(unItem) {
     actualizaGastos();
 }
 function editar(unItem) {
+    
+    const boton = document.getElementById('botonFormulario');
+    boton.innerHTML = "Guardar CAMBIOS";
+
     focoE = unItem;
     let categoria = document.getElementById('lisClasif');
     let nombreGas = document.getElementById('nombreGasto');
